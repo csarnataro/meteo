@@ -16,7 +16,7 @@
   name: 'PageHeader'
 }
 </script>
-<style>
+<style scoped>
 /**
  * Header
  */

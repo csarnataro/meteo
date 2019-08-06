@@ -8,7 +8,7 @@
   name: 'AddButton'
 }
 </script>
-<style>
+<style scoped>
 .fab {
   background-color: #3f51b5;
   border-radius: 50%;

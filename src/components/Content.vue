@@ -1,21 +1,23 @@
 <template>
   <main class="main">
     <AddButton />
-    <!-- <WeatherTemplate /> -->
+    <WeatherTemplate />
   </main>
 </template>
 <script>
 
 import AddButton from './AddButton'
+import WeatherTemplate from './WeatherTemplate'
 
 export default {
   name: 'Content',
   components: {
-    AddButton
+    AddButton,
+    WeatherTemplate
   }
 }
 </script>
-<style>
+<style scoped>
 /**
  * Main body
  */

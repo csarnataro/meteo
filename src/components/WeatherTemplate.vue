@@ -11,12 +11,23 @@
       :temperature="28"
       :icon="'clear-night'"
     />
+    <Future :days="[
+      {temperature: 10, timestamp: 1, icon:'clear-day'},
+      {temperature: 20, timestamp: 2, icon:'cloudy' },
+      {temperature: 20, timestamp: 3, icon:'cloudy' },
+      {temperature: 20, timestamp: 4, icon:'cloudy' },
+      {temperature: 20, timestamp: 5, icon:'cloudy' },
+      {temperature: 20, timestamp: 6, icon:'cloudy' },
+      {temperature: 20, timestamp: 7, icon:'cloudy' },
+
+    ]"/>
   </div>
 </template>
 <script>
 
 import CardSpinner from './CardSpinner'
 import Current from './current/Current'
+import Future from './future/Future'
 import RemoveCardButton from './RemoveCardButton'
 
 export default {
@@ -24,6 +35,7 @@ export default {
   components: {
     CardSpinner,
     Current,
+    Future,
     RemoveCardButton
   }
 }

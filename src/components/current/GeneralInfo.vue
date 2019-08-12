@@ -9,7 +9,7 @@
 <script>
 export default {
   name: 'GeneralInfo',
-  props: ['location', 'date', 'description'],
+  props: ['location', 'date', 'description']
 }
 </script>
 <style scoped>

@@ -1,15 +1,7 @@
 <template>
-  <!--
-  <div class="visual">
-    <div :class="'icon ' + this.icon "></div>
-    <div class="temperature">
-      <span class="value">{{ this.temperature }}</span><span class="scale">°{{ this.scale }}</span>
-    </div>
-  </div>
-  -->
   <div class="oneday">
     <div class="date">00:00</div>
-    <div :class="'icon ' + this.icon "></div>
+    <div :class="`icon ${this.icon}`"></div>
     <div class="temp-high">
       <span class="value">{{ this.temperature }}</span>°
     </div>
@@ -19,7 +11,7 @@
 
 <script>
 export default {
-  name: 'SingleDay',
+  name: 'SingleItem',
   props: {
     icon: String,
     temperature: Number

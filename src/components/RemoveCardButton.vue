@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'RemoveCardButton',
+  name: 'RemoveCardButton'
 }
 </script>
 <style scoped>

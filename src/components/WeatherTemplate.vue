@@ -2,16 +2,26 @@
   <div id="weather-template" class="weather-card">
     <div class="city-key" hidden></div>
     <div class="card-last-updated" hidden></div>
-    <CardSpinner hidden />
-    <RemoveCardButton />
-    <Current 
-      :location="'Roma'" 
-      :date="'Venerdì 2 Agosto 2019, 21:10'" 
-      :description="'Poco nuvoloso'"
-      :temperature="28"
-      :icon="'clear-night'"
+    <CardSpinner :hidden="!this.loading" />
+    <Current
+      :location="this.location"
+      :date="this.date"
+      :description="this.description"
+      :temperature="Math.round(this.temperature)"
+      :icon="this.icon"
+      :humidity="90"
+      :wind="3"
     />
-    <Future :days="[
+    <Future :hours="[
+      {temperature: 10, timestamp: 1, icon:'clear-day'},
+      {temperature: 20, timestamp: 2, icon:'cloudy' },
+      {temperature: 20, timestamp: 3, icon:'cloudy' },
+      {temperature: 20, timestamp: 4, icon:'cloudy' },
+      {temperature: 20, timestamp: 5, icon:'cloudy' },
+      {temperature: 20, timestamp: 6, icon:'cloudy' },
+      {temperature: 20, timestamp: 7, icon:'cloudy' },
+    ]"
+    :days="[
       {temperature: 10, timestamp: 1, icon:'clear-day'},
       {temperature: 20, timestamp: 2, icon:'cloudy' },
       {temperature: 20, timestamp: 3, icon:'cloudy' },
@@ -28,16 +38,56 @@
 import CardSpinner from './CardSpinner'
 import Current from './current/Current'
 import Future from './future/Future'
-import RemoveCardButton from './RemoveCardButton'
 
 export default {
   name: 'WeatherTemplate',
   components: {
     CardSpinner,
     Current,
-    Future,
-    RemoveCardButton
+    Future
+  },
+  data () {
+    return {
+      location: '--',
+      description: '--',
+      date: '--',
+      temperature: null,
+      icon: null
+
+    }
+  },
+  created () {
+    // fetch the data when the view is created and the data is
+    // already being observed
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      this.error = this.post = null
+      this.loading = true
+      const url = `/api/forecast`
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          /* eslint-disable no-console */
+          console.log('****************')
+          console.log(url)
+          console.dir(data)
+          console.log('****************')
+          this.date = data.date
+          this.location = data.location
+          this.description = data.currently.summary
+          this.icon = data.currently.icon
+          this.temperature = data.currently.temperature
+          this.loading = false
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log(`Error: ${error}`)
+        })
+    }
   }
+
 }
 </script>
 <style scoped>
@@ -99,6 +149,5 @@ export default {
     width: 32px;
   }
 }
-
 
 </style>

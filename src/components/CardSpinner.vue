@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'CardSpinner',
+  name: 'CardSpinner'
 }
 </script>
 

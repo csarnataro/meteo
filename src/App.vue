@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import PageWrapper from "./components/PageWrapper.vue";
+import PageWrapper from './components/PageWrapper.vue'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     PageWrapper
   }
-};
+}
 </script>
 
 <style>

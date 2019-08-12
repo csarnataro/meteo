@@ -4,7 +4,7 @@
   </button>
 </template>
 <script>
- export default {
+export default {
   name: 'AddButton'
 }
 </script>

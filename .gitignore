@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/node,vuejs,webstorm
 # Edit at https://www.gitignore.io/?templates=node,vuejs,webstorm
 
+### Custom ###
+svil/
+
 ### Node ###
 # Logs
 logs

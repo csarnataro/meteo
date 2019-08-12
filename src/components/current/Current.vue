@@ -1,13 +1,13 @@
 <template>
   <div>
-    <GeneralInfo 
+    <GeneralInfo
       :location="location"
-      :date="date" 
+      :date="date"
       :description="description"
     />
     <div class="current">
-      <Visual :temperature="temperature" :icon="icon"/>
-      <Description />
+      <Visual v-bind="$props" />
+      <Description v-bind="$props" />
     </div>
   </div>
 </template>
@@ -20,8 +20,8 @@ import Description from './Description'
 export default {
   name: 'Current',
   props: {
-    location: String, 
-    date: String, 
+    location: String,
+    date: String,
     description: String,
     temperature: Number,
     icon: String,
@@ -35,7 +35,7 @@ export default {
     GeneralInfo,
     Visual,
     Description
-  },
+  }
 }
 </script>
 <style scoped>

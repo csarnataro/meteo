@@ -1,12 +1,12 @@
 <template>
   <div class="description">
     <div class="humidity">
-      <span class="label">Umidità:</span>
-      <span class="value"></span><span class="scale">%</span>
+      <span class="label">Umidità: </span>
+      <span class="value">{{ this.humidity }}</span><span class="scale">%</span>
     </div>
     <div class="wind">
-      <span class="label">Vento:</span>
-      <span class="value"></span>
+      <span class="label">Vento: </span>
+      <span class="value">{{ this.wind }} </span>
       <span class="scale">km/h</span>
       <span class="direction"></span>°
     </div>
@@ -24,7 +24,14 @@
 <script>
 export default {
   name: 'Description',
-  props: ['location', 'date', 'description'],
+  props: [
+    'wind',
+    'location',
+    'date',
+    'description',
+    'humidity'
+
+  ]
 }
 </script>
 <style scoped>

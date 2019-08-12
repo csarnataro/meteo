@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "8.x"
+    "node": "10.x"
   },
   "name": "meteo",
   "version": "0.1.0",

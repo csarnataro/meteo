@@ -1,11 +1,11 @@
 # [START app_yaml]
 runtime: nodejs10
-env: flex
+instance_class: F1
 
 ### WARNING ###
 # app.yaml and cloudbuild.yaml cannot be in the same folder
 
-resources:
-  cpu: .2
-  memory_gb: 0.18
-  disk_size_gb: 5
+#resources:
+#  cpu: .2
+#  memory_gb: 0.18
+#  disk_size_gb: 5

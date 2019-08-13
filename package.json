@@ -7,7 +7,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node src/server",
+    "start": "node app.js",
     "dev": "nodemon --exec 'vue-cli-service serve src/client/main'",
     "build": "vue-cli-service build src/client/main",
     "lint": "vue-cli-service lint"

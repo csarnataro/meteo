@@ -1,14 +1,14 @@
 {
   "engines": {
-    "node": "10.x"
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
   "name": "meteo",
   "version": "0.1.0",
   "private": true,
-  "main": "src/server",
   "scripts": {
     "start": "node src/server",
-    "serve": "nodemon --exec 'vue-cli-service serve src/client/main'",
+    "dev": "nodemon --exec 'vue-cli-service serve src/client/main'",
     "build": "vue-cli-service build src/client/main",
     "lint": "vue-cli-service lint"
   },

@@ -5,6 +5,7 @@
   "name": "meteo",
   "version": "0.1.0",
   "private": true,
+  "main": "src/server/index.js",
   "scripts": {
     "start": "node src/server/index.js",
     "serve": "nodemon --exec 'vue-cli-service serve'",

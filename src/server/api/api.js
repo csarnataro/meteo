@@ -1,9 +1,7 @@
 const express = require('express')
 const fetch = require('node-fetch')
 const router = express.Router()
-const { DateTime } = require('luxon')
-const months = require('./months')
-const days = require('./days')
+const { formatForecast } = require('./format-forecast')
 
 const API_KEYS = [
   'e6af5b5feb891b272e18f5e2fc0370a6',
@@ -37,24 +35,8 @@ function getForecast (req, resp) {
       throw new Error(response.statusText)
     }
     return response.json()
-  }).then(data => {
-    let dt = DateTime.fromSeconds(data.currently.time)
-    // let f = { month: 'long', day: 'numeric' }
-    dt.setLocale('it')
-    const forecastFrom = `
-      ${days[dt.weekday]}
-      ${dt.toFormat('dd')}
-      ${months[dt.month]},
-      ${dt.toFormat('HH:mm')}
-    `
-    // .setZone(data.timezone)
-    // .toFormat('DDDD t')
-    // const formattedDate = new Date(forecastDate).toLocaleDateString('it-IT')
-    return Object.assign({}, data, {
-      location: 'Milano',
-      date: forecastFrom
-    })
-  }).then(data => resp.json(data))
+  }).then(formatForecast)
+    .then(data => resp.json(data))
     .catch((err) => {
       console.error('Dark Sky API Error:', err.message)
       resp.json({ error: err })

@@ -1,9 +1,11 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
+    "jest/globals": true
   },
-  'extends': [
+  plugins: ["jest"],
+  extends: [
     'plugin:vue/essential',
     '@vue/standard'
   ],

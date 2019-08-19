@@ -10,11 +10,13 @@
     "start": "node app.js",
     "dev": "nodemon --exec 'vue-cli-service serve src/client/main'",
     "build": "vue-cli-service build src/client/main",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest"
   },
   "dependencies": {
     "connect-history-api-fallback": "^1.6.0",
     "core-js": "^2.6.5",
+    "data-point": "^3.4.3",
     "express": "^4.17.1",
     "luxon": "^1.17.2",
     "node-fetch": "^2.3.0",
@@ -22,14 +24,19 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-plugin-pwa": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
+    "babel-jest": "^24.8.0",
+    "eslint": "^6.1.0",
+    "eslint-plugin-jest": "^22.15.1",
     "eslint-plugin-vue": "^5.0.0",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1",
     "vue-template-compiler": "^2.6.10"
   },

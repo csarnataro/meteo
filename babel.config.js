@@ -1,20 +1,36 @@
 module.exports = {
-  presets: [
-    '@vue/app',
-    [
-      '@babel/preset-env', 
-      { 
-        targets: { 
-          node: 'current' 
-        } 
-      }
-    ],
-    {
-      "modules": "commonjs"
-    }
+  'presets': [
+    ['@babel/preset-env', { 'modules': false }]
   ],
-  // plugins: [
-  //   "@babel/plugin-transform-async-to-generator",
-  //   "@babel/plugin-transform-runtime"
-  // ]
+  'env': {
+    'test': {
+      'presets': [
+        ['@babel/preset-env', { 'targets': { 'node': 'current' } }]
+      ]
+    }
+  }
 }
+
+// presets: [
+//   '@vue/app',
+//   ['@babel/preset-env'],
+// ],
+// env: {
+//   test: {
+//     presets: [
+//       [
+//         '@babel/preset-env',
+//         {
+//           targets: {
+//             node: 'current'
+//           }
+//         }
+//       ]
+//     ]
+//   }
+// },
+// plugins: [
+//   // '@babel/plugin-transform-modules-commonjs',
+//   // '@babel/plugin-transform-async-to-generator'
+//   '@babel/plugin-transform-runtime'
+// ]

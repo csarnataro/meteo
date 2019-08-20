@@ -10,6 +10,16 @@ const days = {
   7: 'Domenica'
 }
 
+const shortDays = {
+  1: 'Lun',
+  2: 'Mar',
+  3: 'Mer',
+  4: 'Gio',
+  5: 'Ven',
+  6: 'Sab',
+  7: 'Dom'
+}
+
 const months = {
   1: 'Gennaio',
   2: 'Febbraio',
@@ -25,6 +35,12 @@ const months = {
   12: 'Gennaio'
 }
 
+const getShortDay = input => {
+  const dt = DateTime.fromSeconds(input)
+  dt.setLocale('it')
+  return shortDays[dt.weekday]
+}
+
 const formatDateFromSeconds = input => {
   const dt = DateTime.fromSeconds(input)
   dt.setLocale('it')
@@ -38,7 +54,15 @@ const getHour = input => {
   return dt.hour
 }
 
+const getFormattedHour = input => {
+  const dt = DateTime.fromSeconds(input)
+  dt.setLocale('it')
+  return dt.toFormat('HH:mm')
+}
+
 module.exports = {
   formatDateFromSeconds,
-  getHour
+  getFormattedHour,
+  getHour,
+  getShortDay
 }

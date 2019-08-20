@@ -1,6 +1,6 @@
 <template>
   <div class="oneday">
-    <div class="date">00:00</div>
+    <div class="date">{{ this.shortDate }}</div>
     <div :class="`icon ${this.icon}`"></div>
     <div class="temp-high">
       <span class="value">{{ this.temperature }}</span>°
@@ -13,6 +13,7 @@
 export default {
   name: 'SingleItem',
   props: {
+    shortDate: String,
     icon: String,
     temperature: Number
   }

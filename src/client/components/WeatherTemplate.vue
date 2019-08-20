@@ -12,25 +12,12 @@
       :humidity="90"
       :wind="3"
     />
-    <Future :hours="[
-      {temperature: 10, timestamp: 1, icon:'clear-day'},
-      {temperature: 20, timestamp: 2, icon:'cloudy' },
-      {temperature: 20, timestamp: 3, icon:'cloudy' },
-      {temperature: 20, timestamp: 4, icon:'cloudy' },
-      {temperature: 20, timestamp: 5, icon:'cloudy' },
-      {temperature: 20, timestamp: 6, icon:'cloudy' },
-      {temperature: 20, timestamp: 7, icon:'cloudy' },
-    ]"
-    :days="[
-      {temperature: 10, timestamp: 1, icon:'clear-day'},
-      {temperature: 20, timestamp: 2, icon:'cloudy' },
-      {temperature: 20, timestamp: 3, icon:'cloudy' },
-      {temperature: 20, timestamp: 4, icon:'cloudy' },
-      {temperature: 20, timestamp: 5, icon:'cloudy' },
-      {temperature: 20, timestamp: 6, icon:'cloudy' },
-      {temperature: 20, timestamp: 7, icon:'cloudy' },
-
-    ]"/>
+    <Future 
+      :today_summary="this.today.summary"
+      :week_summary="this.week.summary"
+      :hours="this.today.data"
+      :days="this.week.data"
+    />
   </div>
 </template>
 <script>
@@ -52,8 +39,16 @@ export default {
       description: '--',
       date: '--',
       temperature: null,
-      icon: null
+      icon: null,
+      today: {
+        summary: '--',
+        data: []
+      },
+      week: {
+        summary: '--',
+        data: []
 
+      },
     }
   },
   created () {
@@ -69,21 +64,18 @@ export default {
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          /* eslint-disable no-console */
-          console.log('****************')
-          console.log(url)
-          console.dir(data)
-          console.log('****************')
           this.date = data.date
           this.location = data.location
-          this.description = data.currently.summary
-          this.icon = data.currently.icon
-          this.temperature = data.currently.temperature
+          this.description = data.summary
+          this.icon = data.icon
+          this.temperature = data.temperature
+          this.today = data.today
+          this.week = data.week
           this.loading = false
         })
         .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.log(`Error: ${error}`)
+          this.location = `Error: ${error}`
+          this.loading = false
         })
     }
   }

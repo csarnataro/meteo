@@ -63,6 +63,10 @@ body {
   background-image: url("/img/add.svg");
 }
 
+.icon.info {
+  background-image: url("/img/info.svg");
+}
+
 .icon.clear-day {
   background-image: url("/img/weather-icons/clear-day.svg");
 }

@@ -1,23 +1,33 @@
-const { DateTime } = require('luxon')
-const months = require('./months')
-const days = require('./days')
+const DataPoint = require('data-point')
+const { formatDateFromSeconds } = require('./date-utils')
+const { filterHoursModulus3, limitTo } = require('./format-forecast-utils')
+const { constant, map } = DataPoint
+
+const datapoint = DataPoint.create()
+
+const singleForecastFormat = {
+  date: ['$time', formatDateFromSeconds],
+  description: '$summary',
+  icon: '$icon'
+}
+const forecastFormatter = {
+  location: constant('Milano'),
+  date: ['$currently.time', formatDateFromSeconds],
+  icon: '$currently.icon',
+  daily: [
+    '$daily.data',
+    map(singleForecastFormat)
+  ],
+  hourly: [
+    '$hourly.data',
+    filterHoursModulus3,
+    limitTo(7),
+    map(singleForecastFormat)
+  ]
+}
 
 function formatForecast (data) {
-  let dt = DateTime.fromSeconds(data.currently.time)
-  dt.setLocale('it')
-  const forecastFrom = `
-    ${days[dt.weekday]}
-    ${dt.toFormat('dd')}
-    ${months[dt.month]},
-    ${dt.toFormat('HH:mm')}
-  `
-  // .setZone(data.timezone)
-  // .toFormat('DDDD t')
-  // const formattedDate = new Date(forecastDate).toLocaleDateString('it-IT')
-  return Object.assign({}, data, {
-    location: 'Milano',
-    date: forecastFrom
-  })
+  return datapoint.resolve(forecastFormatter, data)
 }
 
 module.exports = {

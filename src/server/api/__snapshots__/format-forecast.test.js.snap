@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatForecast should format 1`] = `
+Object {
+  "daily": Array [
+    Object {
+      "date": "Mercoledì     14     Agosto,     00:00",
+      "description": "Poco nuvoloso durante il giorno.",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Giovedì     15     Agosto,     00:00",
+      "description": "Poco nuvoloso durante il giorno.",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Venerdì     16     Agosto,     00:00",
+      "description": "Nubi sparse durante il giorno.",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Sabato     17     Agosto,     00:00",
+      "description": "Nubi sparse durante il giorno.",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Domenica     18     Agosto,     00:00",
+      "description": "Sereno durante il giorno.",
+      "icon": "clear-day",
+    },
+    Object {
+      "date": "Lunedì     19     Agosto,     00:00",
+      "description": "Nubi sparse durante il giorno.",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Martedì     20     Agosto,     00:00",
+      "description": "Nubi sparse durante il giorno.",
+      "icon": "rain",
+    },
+    Object {
+      "date": "Mercoledì     21     Agosto,     00:00",
+      "description": "Possibilità di pioggia leggera nella notte.",
+      "icon": "rain",
+    },
+  ],
+  "date": "Mercoledì     14     Agosto,     09:22",
+  "hourly": Array [
+    Object {
+      "date": "Mercoledì     14     Agosto,     09:00",
+      "description": "Poco Nuvoloso",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Mercoledì     14     Agosto,     12:00",
+      "description": "Nubi Sparse",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Mercoledì     14     Agosto,     15:00",
+      "description": "Poco Nuvoloso",
+      "icon": "partly-cloudy-day",
+    },
+    Object {
+      "date": "Mercoledì     14     Agosto,     18:00",
+      "description": "Sereno",
+      "icon": "clear-day",
+    },
+    Object {
+      "date": "Mercoledì     14     Agosto,     21:00",
+      "description": "Sereno",
+      "icon": "clear-night",
+    },
+    Object {
+      "date": "Giovedì     15     Agosto,     00:00",
+      "description": "Sereno",
+      "icon": "clear-night",
+    },
+    Object {
+      "date": "Giovedì     15     Agosto,     03:00",
+      "description": "Sereno",
+      "icon": "clear-night",
+    },
+  ],
+  "icon": "partly-cloudy-day",
+  "location": "Milano",
+}
+`;

@@ -33,7 +33,7 @@ body {
 }
 
 html {
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 body {

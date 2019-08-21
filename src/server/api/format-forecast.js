@@ -5,7 +5,7 @@ const {
   getShortDay
 } = require('./date-utils')
 const { filterHoursModulus3, limitTo } = require('./format-forecast-utils')
-const { constant, map } = DataPoint
+const { map } = DataPoint
 
 const datapoint = DataPoint.create()
 
@@ -32,25 +32,26 @@ function singleForecastFormat (
 const removeFirst = input => input.slice(1)
 
 const forecastFormatter = {
-  location: constant('Milano'),
-  date: ['$currently.time', formatDateFromSeconds],
-  icon: '$currently.icon',
-  summary: '$currently.summary',
-  temperature: '$currently.temperature',
+  location: '$location',
+  latlng: '$latlng',
+  date: ['$data.currently.time', formatDateFromSeconds],
+  icon: '$data.currently.icon',
+  summary: '$data.currently.summary',
+  temperature: '$data.currently.temperature',
   week: {
-    summary: '$daily.summary',
-    icon: '$daily.icon',
+    summary: '$data.daily.summary',
+    icon: '$data.daily.icon',
     data: [
-      '$daily.data',
+      '$data.daily.data',
       removeFirst,
       limitTo(7),
       map(singleForecastFormat('$temperatureHigh', getShortDay))
     ] },
   today: {
-    summary: '$hourly.summary',
-    icon: '$hourly.icon',
+    summary: '$data.hourly.summary',
+    icon: '$data.hourly.icon',
     data: [
-      '$hourly.data',
+      '$data.hourly.data',
       filterHoursModulus3,
       limitTo(7),
       map(singleForecastFormat('$temperature', getFormattedHour))
@@ -58,8 +59,12 @@ const forecastFormatter = {
   }
 }
 
-function formatForecast (data) {
-  return datapoint.resolve(forecastFormatter, data)
+const formatForecast = (latlng, location) => data => {
+  return datapoint.resolve(forecastFormatter, {
+    data,
+    latlng,
+    location
+  })
 }
 
 module.exports = {

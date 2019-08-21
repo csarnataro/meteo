@@ -25,9 +25,9 @@ router.use(function timeLog (req, res, next) {
  * @param {Response} resp response object from Express.
  */
 function getForecast (req, resp) {
-  console.log('Received forecast request')
-  const location = req.params.location || '45.4754304,9.2110848'
-  const url = `${BASE_URL}/${API_KEYS[1]}/${location}?lang=it&units=si`
+  const latlng = req.query.latlng || '45.4754304,9.2110848'
+  const location = req.query.location || 'Milano'
+  const url = `${BASE_URL}/${API_KEYS[1]}/${latlng}?lang=it&units=si`
   console.log(url)
   // resp.json(generateFakeForecast(location));
   fetch(url).then((response) => {
@@ -35,7 +35,7 @@ function getForecast (req, resp) {
       throw new Error(response.statusText)
     }
     return response.json()
-  }).then(formatForecast)
+  }).then(formatForecast(latlng, location))
     .then(data => resp.json(data))
     .catch((err) => {
       console.error('Dark Sky API Error:', err.message)

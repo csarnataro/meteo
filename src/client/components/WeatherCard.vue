@@ -1,10 +1,13 @@
 <template>
-  <div id="weather-template" class="weather-card">
+  <div class="weather-card">
     <div class="city-key" hidden></div>
     <div class="card-last-updated" hidden></div>
+    <small hidden>{{location}} </small>
+    <small hidden>{{latlng}}</small>
     <CardSpinner :hidden="!this.loading" />
     <Current
       :location="this.location"
+      :latlng="this.latlng"
       :date="this.date"
       :description="this.description"
       :temperature="Math.round(this.temperature)"
@@ -12,7 +15,7 @@
       :humidity="90"
       :wind="3"
     />
-    <Future 
+    <Future
       :today_summary="this.today.summary"
       :week_summary="this.week.summary"
       :hours="this.today.data"
@@ -27,15 +30,18 @@ import Current from './current/Current'
 import Future from './future/Future'
 
 export default {
-  name: 'WeatherTemplate',
+  name: 'WeatherCard',
   components: {
     CardSpinner,
     Current,
     Future
   },
-  data () {
+  props: {
+    location: String,
+    latlng: String
+  },
+  data: function () {
     return {
-      location: '--',
       description: '--',
       date: '--',
       temperature: null,
@@ -48,7 +54,7 @@ export default {
         summary: '--',
         data: []
 
-      },
+      }
     }
   },
   created () {
@@ -60,12 +66,11 @@ export default {
     fetchData () {
       this.error = this.post = null
       this.loading = true
-      const url = `/api/forecast`
+      const url = `/api/forecast?location=${this.location}&latlng=${this.latlng}`
       fetch(url)
         .then(response => response.json())
         .then(data => {
           this.date = data.date
-          this.location = data.location
           this.description = data.summary
           this.icon = data.icon
           this.temperature = data.temperature
